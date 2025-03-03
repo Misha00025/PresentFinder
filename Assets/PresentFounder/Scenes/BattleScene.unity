@@ -991,11 +991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c960480a1975064a894707fc4f8978a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: Player
-  PlayerSprite: {fileID: 21300000, guid: 6e5e4fbd7cffbd143a88ff40b22de343, type: 3}
+  PlayerTemplate: {fileID: 11400000, guid: e5f6f111572226c8896cd1b8e4d9d52f, type: 2}
   _playerView: {fileID: 1248152432}
-  EnemyName: Enemy
-  EnemySprite: {fileID: 21300000, guid: 7ca919c35ad327b46a19255daace105d, type: 3}
+  EnemyTemplate: {fileID: 11400000, guid: 4e5eeca3197b5e2aa8d48f68cb29fe56, type: 2}
   _enemyView: {fileID: 1997524285}
 --- !u!1001 &750657101
 PrefabInstance:

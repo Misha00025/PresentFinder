@@ -9,24 +9,22 @@ public class BattleCompositeRoot : MonoBehaviour
     
     
     [Header("Player")]
-    public string PlayerName;
-    public Sprite PlayerSprite;
+    public CharacterTemplate PlayerTemplate;
     public CharacterStatsViewModel _playerView;
     
     [Header("Enemy")]
-    public string EnemyName;
-    public Sprite EnemySprite;
+    public CharacterTemplate EnemyTemplate;
     public CharacterStatsViewModel _enemyView;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _player = new Character(new Property(100));
-        _enemy = new Character(new Property(20));
+        _player = new Character(new Property(PlayerTemplate.MaxHealth));
+        _enemy = new Character(new Property(EnemyTemplate.MaxHealth));
         
-        _playerView.Instantiate(PlayerName, PlayerSprite, _player);
-        _enemyView.Instantiate(EnemyName, EnemySprite, _enemy);
+        _playerView.Instantiate(PlayerTemplate.Name, PlayerTemplate.Icon, _player);
+        _enemyView.Instantiate(EnemyTemplate.Name, EnemyTemplate.Icon, _enemy);
     }
     
     public void TakeDamage(int damage)
