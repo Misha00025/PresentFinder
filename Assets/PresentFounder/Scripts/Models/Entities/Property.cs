@@ -28,7 +28,7 @@ namespace Wof.PF.Models
         {
             _value = newHealth > 0 ? newHealth : 0;
             _value = _value < _maxValue ? _value : _maxValue;
-            Changed.Invoke(_value); 
+            Changed?.Invoke(_value); 
         }
     }
 }
