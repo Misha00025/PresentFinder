@@ -1,12 +1,14 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Wof.PF.Models;
 
 public class BattleCompositeRoot : MonoBehaviour
 {
+    private TurnManager _turnManager;
+
     private Character _player;
     private Character _enemy;
     
+    public StateFactory StateFactory;    
     
     [Header("Player")]
     public CharacterTemplate PlayerTemplate;
@@ -17,11 +19,15 @@ public class BattleCompositeRoot : MonoBehaviour
     public CharacterStatsViewModel _enemyView;
     
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {       
         _player = new Character(new Property(PlayerTemplate.MaxHealth));
         _enemy = new Character(new Property(EnemyTemplate.MaxHealth));
+        
+        StateFactory.Instantiate(_player);
+        _turnManager = new TurnManager(new StateMachine(), StateFactory);
+        StateFactory.PlayerController.Instantiate(_player, _turnManager);
+        StateFactory.EnemyController.Instantiate(_enemy, _turnManager);
         
         _playerView.Instantiate(PlayerTemplate.Name, PlayerTemplate.Icon, _player);
         _enemyView.Instantiate(EnemyTemplate.Name, EnemyTemplate.Icon, _enemy);
