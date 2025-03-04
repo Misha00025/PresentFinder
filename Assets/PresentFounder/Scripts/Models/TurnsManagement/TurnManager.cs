@@ -54,12 +54,17 @@ namespace Wof.PF.Models
 
         public void NextTurn() 
         {
+            if (_turns.Count == 0)
+            {
+                var tmp = _playedTurns;
+                _playedTurns = _turns;
+                _turns = tmp;
+                RoundEnded?.Invoke();                
+            }
             var turn = _turns.Dequeue();
             var state = _stateFactory.CreateState(turn);
             _machine.ChangeState(state);
             _playedTurns.Enqueue(turn);
-            if (_turns.Count == 0)
-                RoundEnded.Invoke();
         }
     }
 }

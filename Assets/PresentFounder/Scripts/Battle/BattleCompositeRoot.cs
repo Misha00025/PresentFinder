@@ -1,6 +1,7 @@
 using UnityEngine;
 using Wof.PF.Models;
 
+[RequireComponent(typeof(StateFactory))]
 public class BattleCompositeRoot : MonoBehaviour
 {
     private TurnManager _turnManager;
@@ -8,38 +9,65 @@ public class BattleCompositeRoot : MonoBehaviour
     private Character _player;
     private Character _enemy;
     
-    public StateFactory StateFactory;    
+    private PlayerController _playerController;
+    private EnemyController _enemyController;
+    private StateFactory _stateFactory;    
     
     [Header("Player")]
     public CharacterTemplate PlayerTemplate;
-    public CharacterStatsViewModel _playerView;
+    public CharacterStatsViewModel PlayerView;
     
     [Header("Enemy")]
     public CharacterTemplate EnemyTemplate;
-    public CharacterStatsViewModel _enemyView;
+    public CharacterStatsViewModel EnemyView;
     
+    private void FindReferences()
+    {
+        _stateFactory = gameObject.GetComponent<StateFactory>();
+        _playerController = gameObject.GetComponentInChildren<PlayerController>(includeInactive: true);
+        _enemyController = gameObject.GetComponentInChildren<EnemyController>(includeInactive: true);
+    }
 
     void Start()
     {       
+        FindReferences();
+        SetupCharacters();
+        SetupTurnManagement();
+        SetupCharactersControllers();
+        SetupView();
+        StartBattle();
+    }
+    
+    private void SetupCharacters()
+    {
         _player = new Character(new Property(PlayerTemplate.MaxHealth));
-        _enemy = new Character(new Property(EnemyTemplate.MaxHealth));
-        
-        StateFactory.Instantiate(_player);
-        _turnManager = new TurnManager(new StateMachine(), StateFactory);
-        StateFactory.PlayerController.Instantiate(_player, _turnManager);
-        StateFactory.EnemyController.Instantiate(_enemy, _turnManager);
-        
-        _playerView.Instantiate(PlayerTemplate.Name, PlayerTemplate.Icon, _player);
-        _enemyView.Instantiate(EnemyTemplate.Name, EnemyTemplate.Icon, _enemy);
+        _enemy = new Character(new Property(EnemyTemplate.MaxHealth));        
     }
     
-    public void TakeDamage(int damage)
+    private void SetupTurnManagement()
     {
-        _player.Health.Value -= damage;
+        _stateFactory.Instantiate(_player);
+        _turnManager = new TurnManager(new StateMachine(), _stateFactory);
+        _stateFactory.PlayerController.Instantiate(_player, _turnManager);
+        _stateFactory.EnemyController.Instantiate(_enemy, _turnManager);
     }
     
-    public void TakeHeal(int heal)
+    private void SetupCharactersControllers()
     {
-        _player.Health.Value += heal;
+        // _playerController.Instantiate(_player, _turnManager);
+        _playerController.Disable();
+        // _enemyController.Instantiate(_enemy, _turnManager);
+        _enemyController.Disable();
+    }
+    
+    private void SetupView()
+    {
+        PlayerView.Instantiate(PlayerTemplate.Name, PlayerTemplate.Icon, _player);
+        EnemyView.Instantiate(EnemyTemplate.Name, EnemyTemplate.Icon, _enemy);        
+    }
+    
+    private void StartBattle()
+    {
+        _turnManager.NextTurn();
     }
 }
