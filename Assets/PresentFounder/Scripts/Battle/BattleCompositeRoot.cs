@@ -4,14 +4,15 @@ using Wof.PF.Models;
 [RequireComponent(typeof(StateFactory))]
 public class BattleCompositeRoot : MonoBehaviour
 {
+    private StateFactory _stateFactory; 
     private TurnManager _turnManager;
+    private ActionRecorder _actionRecorder;
 
     private Character _player;
     private Character _enemy;
     
     private PlayerController _playerController;
-    private EnemyController _enemyController;
-    private StateFactory _stateFactory;    
+    private EnemyController _enemyController;   
     
     [Header("Player")]
     public CharacterTemplate PlayerTemplate;
@@ -32,7 +33,7 @@ public class BattleCompositeRoot : MonoBehaviour
     {       
         FindReferences();
         SetupCharacters();
-        SetupTurnManagement();
+        SetupGameplayComponents();
         SetupCharactersControllers();
         SetupView();
         StartBattle();
@@ -44,19 +45,19 @@ public class BattleCompositeRoot : MonoBehaviour
         _enemy = new Character(new Property(EnemyTemplate.MaxHealth));        
     }
     
-    private void SetupTurnManagement()
+    private void SetupGameplayComponents()
     {
         _stateFactory.Instantiate(_player);
         _turnManager = new TurnManager(new StateMachine(), _stateFactory);
-        _stateFactory.PlayerController.Instantiate(_player, _turnManager);
-        _stateFactory.EnemyController.Instantiate(_enemy, _turnManager);
+        _actionRecorder = new ActionRecorder(_player, _enemy);
+        
     }
     
     private void SetupCharactersControllers()
     {
-        // _playerController.Instantiate(_player, _turnManager);
+        _playerController.Instantiate(_player, _turnManager, _actionRecorder);
         _playerController.Disable();
-        // _enemyController.Instantiate(_enemy, _turnManager);
+        _enemyController.Instantiate(_enemy, _turnManager, _actionRecorder);
         _enemyController.Disable();
     }
     

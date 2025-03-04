@@ -6,15 +6,16 @@ using Wof.PF.Models;
 public class PlayerController : MyCharacterController
 {
     [field: SerializeField] public List<Button> Buttons { get; private set; }
+    [field: SerializeField] public List<PlayerActionType> Actions { get; private set; }
 
-    public void Start()
+    protected override void OnInstantiated()
     {
         if (Buttons.Count == 4)
         {
-            Buttons[0].onClick.AddListener(Bite);
-            Buttons[1].onClick.AddListener(Scratch);
-            Buttons[2].onClick.AddListener(Hiss);
-            Buttons[3].onClick.AddListener(Retreat);
+            Buttons[0].onClick.AddListener(()=>Activate(Actions[0]));
+            Buttons[1].onClick.AddListener(()=>Activate(Actions[1]));
+            Buttons[2].onClick.AddListener(()=>Activate(Actions[2]));
+            Buttons[3].onClick.AddListener(()=>Activate(Actions[3]));
         }
     }
 
@@ -34,27 +35,10 @@ public class PlayerController : MyCharacterController
         }
     }
     
-    public void Bite()
+    protected void Activate(PlayerActionType actionType)
     {
-        Debug.Log("Bite!");
-        EndTurn();
-    }
-    
-    public void Scratch()
-    {
-        Debug.Log("Scratch!");
-        EndTurn();
-    }
-    
-    public void Hiss()
-    {
-        Debug.Log("Hiss!");
-        EndTurn();
-    }
-    
-    public void Retreat()
-    {
-        Debug.Log("Retreat!");
-        EndTurn();
+        Debug.Log($"Action: {actionType}");
+        ActionRecorder.RegisterPlayerAction(actionType);
+        EndTurn();   
     }
 }

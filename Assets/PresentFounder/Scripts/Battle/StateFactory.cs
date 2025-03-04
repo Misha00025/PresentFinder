@@ -9,6 +9,8 @@ public class StateFactory : MonoBehaviour, IStateFactory
     [field: SerializeField] public MyCharacterController PlayerController { get; private set; }
     [field: SerializeField] public MyCharacterController EnemyController { get; private set; }
     
+    public UnityEvent<object> TurnStarted = new();
+    
     public void Instantiate(object player)
     {
         _player = player;  
@@ -21,6 +23,7 @@ public class StateFactory : MonoBehaviour, IStateFactory
             SetupPlayerState(ref state);
         else
             SetupEnemyState(ref state);
+        state.Started += () => { TurnStarted.Invoke(turn.Entity); };
         return state;
     }
     

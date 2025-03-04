@@ -5,27 +5,34 @@ public abstract class MyCharacterController : MonoBehaviour
 {
     private Character _model = null;
     private TurnManager _turnManager = null;
+    private ActionRecorder _actionRecorder = null;
     private Turn _myTurn;
     
     public Character Model => _model;
+    public ActionRecorder ActionRecorder => _actionRecorder;
     // protected TurnManager TurnManager => _turnManager;
 
-    public void Instantiate(Character model, TurnManager turnManager)
+    public void Instantiate(Character model, TurnManager turnManager, ActionRecorder actionRecorder)
     {
         if (_model == null)
             _model = model;
         if (_turnManager == null)
             _turnManager = turnManager;
+        if (_actionRecorder == null)
+            _actionRecorder = actionRecorder;
         _myTurn = new Turn(_model);
         _turnManager.Add(_myTurn);
+        OnInstantiated();
     }
 
-    public void Enable()
+    protected virtual void OnInstantiated() {}
+
+    public virtual void Enable()
     {
         gameObject.SetActive(true);
     }
 
-    public void Disable()
+    public virtual void Disable()
     {
         gameObject.SetActive(false);
     }
@@ -34,7 +41,6 @@ public abstract class MyCharacterController : MonoBehaviour
 
     protected virtual void EndTurn()
     {
-        Debug.Log($"Current turn: {_turnManager.CurrentTurn} : {_myTurn}");
         if (IsMyTurn())
         {
             Debug.Log("My turn ended!");
