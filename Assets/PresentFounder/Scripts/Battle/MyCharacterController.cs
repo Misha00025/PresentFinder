@@ -10,7 +10,6 @@ public abstract class MyCharacterController : MonoBehaviour
     
     public Character Model => _model;
     public ActionRecorder ActionRecorder => _actionRecorder;
-    // protected TurnManager TurnManager => _turnManager;
 
     public void Instantiate(Character model, TurnManager turnManager, ActionRecorder actionRecorder)
     {
