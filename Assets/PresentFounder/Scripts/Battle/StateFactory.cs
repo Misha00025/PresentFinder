@@ -6,14 +6,16 @@ public class StateFactory : MonoBehaviour, IStateFactory
 {
     private object _player;
     
-    [field: SerializeField] public MyCharacterController PlayerController { get; private set; }
-    [field: SerializeField] public MyCharacterController EnemyController { get; private set; }
+    private MyCharacterController _playerController;
+    private MyCharacterController _enemyController;
     
     public UnityEvent<object> TurnStarted = new();
     
-    public void Instantiate(object player)
+    public void Instantiate(object player, MyCharacterController playerController, MyCharacterController enemyController)
     {
-        _player = player;  
+        _player = player;
+        _playerController = playerController;
+        _enemyController = enemyController;
     }
     
     public State CreateState(Turn turn)
@@ -29,13 +31,13 @@ public class StateFactory : MonoBehaviour, IStateFactory
     
     public void SetupPlayerState(ref State state)
     {
-        state.Started += PlayerController.Enable;
-        state.Ended += PlayerController.Disable;
+        state.Started += _playerController.Enable;
+        state.Ended += _playerController.Disable;
     }
     
     public void SetupEnemyState(ref State state)
     {
-        state.Started += EnemyController.Enable;
-        state.Ended += EnemyController.Disable;
+        state.Started += _enemyController.Enable;
+        state.Ended += _enemyController.Disable;
     }
 }

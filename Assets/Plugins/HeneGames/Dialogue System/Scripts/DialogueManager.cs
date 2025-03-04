@@ -41,129 +41,12 @@ namespace HeneGames.DialogueSystem
             //Start dialogue by input
             if (Input.GetKeyDown(DialogueUI.instance.actionInput) && dialogueTrigger != null && !dialogueIsOn)
             {
-                //Trigger event inside DialogueTrigger component
-                if (dialogueTrigger != null)
-                {
-                    dialogueTrigger.startDialogueEvent.Invoke();
-                }
-
                 startDialogueEvent.Invoke();
 
                 //If component found start dialogue
                 DialogueUI.instance.StartDialogue(this);
 
-                //Hide interaction UI
-                DialogueUI.instance.ShowInteractionUI(false);
-
                 dialogueIsOn = true;
-            }
-        }
-
-        //Start dialogue by trigger
-        private void OnTriggerEnter(Collider other)
-        {
-            if (triggerState == TriggerState.Collision && !dialogueIsOn)
-            {
-                //Try to find the "DialogueTrigger" component in the crashing collider
-                if (other.gameObject.TryGetComponent<DialogueTrigger>(out DialogueTrigger _trigger))
-                {
-                    //Trigger event inside DialogueTrigger component and store refenrece
-                    dialogueTrigger = _trigger;
-                    dialogueTrigger.startDialogueEvent.Invoke();
-
-                    startDialogueEvent.Invoke();
-
-                    //If component found start dialogue
-                    DialogueUI.instance.StartDialogue(this);
-
-                    dialogueIsOn = true;
-                }
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (triggerState == TriggerState.Collision && !dialogueIsOn)
-            {
-                //Try to find the "DialogueTrigger" component in the crashing collider
-                if (collision.gameObject.TryGetComponent<DialogueTrigger>(out DialogueTrigger _trigger))
-                {
-                    //Trigger event inside DialogueTrigger component and store refenrece
-                    dialogueTrigger = _trigger;
-                    dialogueTrigger.startDialogueEvent.Invoke();
-
-                    startDialogueEvent.Invoke();
-
-                    //If component found start dialogue
-                    DialogueUI.instance.StartDialogue(this);
-
-                    dialogueIsOn = true;
-                }
-            }
-        }
-
-        //Start dialogue by pressing DialogueUI action input
-        private void OnTriggerStay(Collider other)
-        {
-            if (dialogueTrigger != null)
-                return;
-
-            if (triggerState == TriggerState.Input && dialogueTrigger == null)
-            {
-                //Try to find the "DialogueTrigger" component in the crashing collider
-                if (other.gameObject.TryGetComponent<DialogueTrigger>(out DialogueTrigger _trigger))
-                {
-                    //Show interaction UI
-                    DialogueUI.instance.ShowInteractionUI(true);
-
-                    //Store refenrece
-                    dialogueTrigger = _trigger;
-                }
-            }
-        }
-
-        private void OnTriggerStay2D(Collider2D collision)
-        {
-            if (dialogueTrigger != null)
-                return;
-
-            if (triggerState == TriggerState.Input && dialogueTrigger == null)
-            {
-                //Try to find the "DialogueTrigger" component in the crashing collider
-                if (collision.gameObject.TryGetComponent<DialogueTrigger>(out DialogueTrigger _trigger))
-                {
-                    //Show interaction UI
-                    DialogueUI.instance.ShowInteractionUI(true);
-
-                    //Store refenrece
-                    dialogueTrigger = _trigger;
-                }
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            //Try to find the "DialogueTrigger" component from the exiting collider
-            if (other.gameObject.TryGetComponent<DialogueTrigger>(out DialogueTrigger _trigger))
-            {
-                //Hide interaction UI
-                DialogueUI.instance.ShowInteractionUI(false);
-
-                //Stop dialogue
-                StopDialogue();
-            }
-        }
-
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            //Try to find the "DialogueTrigger" component from the exiting collider
-            if (collision.gameObject.TryGetComponent<DialogueTrigger>(out DialogueTrigger _trigger))
-            {
-                //Hide interaction UI
-                DialogueUI.instance.ShowInteractionUI(false);
-
-                //Stop dialogue
-                StopDialogue();
             }
         }
 

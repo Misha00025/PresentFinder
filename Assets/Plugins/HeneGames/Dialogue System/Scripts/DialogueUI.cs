@@ -26,7 +26,6 @@ namespace HeneGames.DialogueSystem
 
             //Hide dialogue and interaction UI at awake
             dialogueWindow.SetActive(false);
-            interactionUI.SetActive(false);
         }
 
         #endregion
@@ -41,7 +40,6 @@ namespace HeneGames.DialogueSystem
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private TextMeshProUGUI messageText;
         [SerializeField] private GameObject dialogueWindow;
-        [SerializeField] private GameObject interactionUI;
 
         [Header("Settings")]
         [SerializeField] private bool animateText = true;
@@ -147,11 +145,6 @@ namespace HeneGames.DialogueSystem
         public void ClearText()
         {
             dialogueWindow.SetActive(false);
-        }
-
-        public void ShowInteractionUI(bool _value)
-        {
-            interactionUI.SetActive(_value);
         }
 
         public bool IsProcessingDialogue()

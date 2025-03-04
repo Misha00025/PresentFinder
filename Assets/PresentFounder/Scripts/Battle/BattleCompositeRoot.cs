@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using Wof.PF.Models;
 
 [RequireComponent(typeof(StateFactory))]
@@ -12,7 +14,9 @@ public class BattleCompositeRoot : MonoBehaviour
     private Character _enemy;
     
     private PlayerController _playerController;
-    private EnemyController _enemyController;   
+    private EnemyController _enemyController;  
+    
+    public UnityEvent SceneLoaded;
     
     [Header("Player")]
     public CharacterTemplate PlayerTemplate;
@@ -36,7 +40,7 @@ public class BattleCompositeRoot : MonoBehaviour
         SetupGameplayComponents();
         SetupCharactersControllers();
         SetupView();
-        StartBattle();
+        SceneLoaded.Invoke();
     }
     
     private void SetupCharacters()
@@ -47,7 +51,7 @@ public class BattleCompositeRoot : MonoBehaviour
     
     private void SetupGameplayComponents()
     {
-        _stateFactory.Instantiate(_player);
+        _stateFactory.Instantiate(_player, _playerController, _enemyController);
         _turnManager = new TurnManager(new StateMachine(), _stateFactory);
         _actionRecorder = new ActionRecorder(_player, _enemy);
         
@@ -67,7 +71,7 @@ public class BattleCompositeRoot : MonoBehaviour
         EnemyView.Instantiate(EnemyTemplate.Name, EnemyTemplate.Icon, _enemy);        
     }
     
-    private void StartBattle()
+    public void StartBattle()
     {
         _turnManager.NextTurn();
     }

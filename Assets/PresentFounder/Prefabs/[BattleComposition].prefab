@@ -276,8 +276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0d676dbfde4e3889ba99d772377cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PlayerController>k__BackingField: {fileID: 2498405466029188765}
-  <EnemyController>k__BackingField: {fileID: 8136519951762451144}
   TurnStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -293,6 +291,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c960480a1975064a894707fc4f8978a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoRun: 0
+  SceneLoaded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1793528943089758283}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4850387768092031531}
+        m_TargetAssemblyTypeName: BattleCompositeRoot, Assembly-CSharp
+        m_MethodName: StartBattle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   PlayerTemplate: {fileID: 11400000, guid: e5f6f111572226c8896cd1b8e4d9d52f, type: 2}
   PlayerView: {fileID: 3753398382767615672}
   EnemyTemplate: {fileID: 11400000, guid: 4e5eeca3197b5e2aa8d48f68cb29fe56, type: 2}
@@ -306,6 +332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6451939989645687270}
+  - component: {fileID: 6361760679293534562}
   m_Layer: 0
   m_Name: '[UI]'
   m_TagString: Untagged
@@ -322,7 +349,7 @@ Transform:
   m_GameObject: {fileID: 1793528943089758283}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.033757657, y: 0.79161775, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -330,6 +357,21 @@ Transform:
   - {fileID: 8509552484338824970}
   m_Father: {fileID: 7196812222925615825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6361760679293534562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793528943089758283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06df0c8b1713651948d2828e6bf461cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftPanel: {fileID: 5633264892992966400}
+  rightPanel: {fileID: 2654645104556760704}
+  animationDuration: 1
 --- !u!1 &2106370569078608475
 GameObject:
   m_ObjectHideFlags: 0
