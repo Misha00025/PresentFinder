@@ -38,7 +38,7 @@ public class SocksController : EnemyController
             {   
                 var canAttack = attacker.CanAttack(LastPlayerAction);
                 if (canAttack)
-                    ActionRecorder.RegisterEnemyAttack(5);
+                    ActionRecorder.RegisterEnemyAttack();
                 attacker.View.ShowAttach(!canAttack);
                 yield return new WaitForSeconds(0.2f);
             }

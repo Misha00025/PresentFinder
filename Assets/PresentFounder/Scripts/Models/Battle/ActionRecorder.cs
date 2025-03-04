@@ -20,7 +20,7 @@ namespace Wof.PF.Models
             {
                 case PlayerActionType.Bite:
                 case PlayerActionType.Scratch:
-                    _enemy.Health.Value -= 1;
+                    _enemy.Health.Value -= _player.Damage;
                     break;
                 case PlayerActionType.Hiss:
                     break;
@@ -32,9 +32,9 @@ namespace Wof.PF.Models
             PlayerActionRecorded?.Invoke(actionType);
         }
         
-        public void RegisterEnemyAttack(int damage)
+        public void RegisterEnemyAttack()
         {
-            _player.Health.Value -= damage;
+            _player.Health.Value -= _enemy.Damage;
         }
     } 
 }

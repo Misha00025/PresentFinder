@@ -9,7 +9,7 @@ public class TestEnemyController : EnemyController
         Debug.Log("Enemy Turn Started!");
         yield return new WaitForSeconds(1);
         if (LastPlayerAction != PlayerActionType.Hiss)
-            ActionRecorder.RegisterEnemyAttack(5);
+            ActionRecorder.RegisterEnemyAttack();
         EndTurn();
     }
 }

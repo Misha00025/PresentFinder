@@ -41,8 +41,8 @@ public class BattleCompositeRoot : MonoBehaviour
     
     private void SetupCharacters()
     {
-        _player = new Character(new Property(PlayerTemplate.MaxHealth));
-        _enemy = new Character(new Property(EnemyTemplate.MaxHealth));        
+        _player = new Character(new Property(PlayerTemplate.MaxHealth), PlayerTemplate.Damage);
+        _enemy = new Character(new Property(EnemyTemplate.MaxHealth), EnemyTemplate.Damage);        
     }
     
     private void SetupGameplayComponents()
