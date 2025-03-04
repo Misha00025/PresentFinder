@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Wof.PF.Models;
 
@@ -15,10 +16,21 @@ public abstract class EnemyController : MyCharacterController
     {
         LastPlayerAction = actionType;
     }
-    
-    
+        
+    public override void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    public override void OnEnable()
+    {
+        StartCoroutine(Turn());
+    }
+        
     public void OnDestroy()
     {
         ActionRecorder.PlayerActionRecorded -= OnPlayerActionRecorded;
     }
+    
+    protected abstract IEnumerator Turn();
 }

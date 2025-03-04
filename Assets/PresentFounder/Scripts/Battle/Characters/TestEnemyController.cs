@@ -4,18 +4,7 @@ using Wof.PF.Models;
 
 public class TestEnemyController : EnemyController
 {
-    public override void OnDisable()
-    {
-        StopAllCoroutines();
-    }
-
-    public override void OnEnable()
-    {
-        StartCoroutine(MyTurn());
-    }
-    
-    
-    private IEnumerator MyTurn()
+    protected override IEnumerator Turn()
     {
         Debug.Log("Enemy Turn Started!");
         yield return new WaitForSeconds(1);
