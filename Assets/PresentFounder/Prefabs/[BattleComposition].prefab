@@ -291,7 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c960480a1975064a894707fc4f8978a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoRun: 0
   SceneLoaded:
     m_PersistentCalls:
       m_Calls:
@@ -332,7 +331,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6451939989645687270}
-  - component: {fileID: 6361760679293534562}
   m_Layer: 0
   m_Name: '[UI]'
   m_TagString: Untagged
@@ -357,21 +355,6 @@ Transform:
   - {fileID: 8509552484338824970}
   m_Father: {fileID: 7196812222925615825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6361760679293534562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1793528943089758283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06df0c8b1713651948d2828e6bf461cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftPanel: {fileID: 5633264892992966400}
-  rightPanel: {fileID: 2654645104556760704}
-  animationDuration: 1
 --- !u!1 &2106370569078608475
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +367,7 @@ GameObject:
   - component: {fileID: 3149696699301654802}
   - component: {fileID: 636856887808083946}
   - component: {fileID: 2233190158704742578}
+  - component: {fileID: 9147385905167340151}
   m_Layer: 5
   m_Name: DynamicCanvas
   m_TagString: Untagged
@@ -475,6 +459,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &9147385905167340151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106370569078608475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06df0c8b1713651948d2828e6bf461cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftPanel: {fileID: 5633264892992966400}
+  rightPanel: {fileID: 2654645104556760704}
+  animationDuration: 1
 --- !u!1 &2558084177015777761
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,6 @@ namespace HeneGames.DialogueSystem
         private int currentSentence;
         private float coolDownTimer;
         private bool dialogueIsOn;
-        private DialogueTrigger dialogueTrigger;
 
         public enum TriggerState
         {
@@ -37,27 +36,21 @@ namespace HeneGames.DialogueSystem
             {
                 coolDownTimer -= Time.deltaTime;
             }
+        }
 
-            //Start dialogue by input
-            if (Input.GetKeyDown(DialogueUI.instance.actionInput) && dialogueTrigger != null && !dialogueIsOn)
-            {
-                startDialogueEvent.Invoke();
+        public void InitDialogue()
+        {
+            if (dialogueIsOn)
+                return;
+            startDialogueEvent.Invoke();
 
-                //If component found start dialogue
-                DialogueUI.instance.StartDialogue(this);
+            DialogueUI.instance.StartDialogue(this);
 
-                dialogueIsOn = true;
-            }
+            dialogueIsOn = true;
         }
 
         public void StartDialogue()
         {
-            //Start event
-            if(dialogueTrigger != null)
-            {
-                dialogueTrigger.startDialogueEvent.Invoke();
-            }
-
             //Reset sentence index
             currentSentence = 0;
 
@@ -82,12 +75,6 @@ namespace HeneGames.DialogueSystem
 
             //Add one to sentence index
             currentSentence++;
-
-            //Next sentence event
-            if (dialogueTrigger != null)
-            {
-                dialogueTrigger.nextSentenceDialogueEvent.Invoke();
-            }
 
             nextSentenceDialogueEvent.Invoke();
 
@@ -118,12 +105,6 @@ namespace HeneGames.DialogueSystem
 
         public void StopDialogue()
         {
-            //Stop dialogue event
-            if (dialogueTrigger != null)
-            {
-                dialogueTrigger.endDialogueEvent.Invoke();
-            }
-
             //Hide dialogue UI
             DialogueUI.instance.ClearText();
 
@@ -135,7 +116,6 @@ namespace HeneGames.DialogueSystem
 
             //Remove trigger refence
             dialogueIsOn = false;
-            dialogueTrigger = null;
         }
 
         private void PlaySound(AudioClip _audioClip)
