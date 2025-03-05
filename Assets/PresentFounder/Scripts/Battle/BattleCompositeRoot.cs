@@ -15,6 +15,7 @@ public class BattleCompositeRoot : MonoBehaviour
     
     private PlayerController _playerController;
     private EnemyController _enemyController;  
+    private BattleController _battleController;
     
     public UnityEvent SceneLoaded;
     
@@ -31,6 +32,7 @@ public class BattleCompositeRoot : MonoBehaviour
         _stateFactory = gameObject.GetComponent<StateFactory>();
         _playerController = gameObject.GetComponentInChildren<PlayerController>(includeInactive: true);
         _enemyController = gameObject.GetComponentInChildren<EnemyController>(includeInactive: true);
+        _battleController = gameObject.GetComponentInChildren<BattleController>(includeInactive: true);
     }
 
     void Start()
@@ -40,9 +42,10 @@ public class BattleCompositeRoot : MonoBehaviour
         SetupGameplayComponents();
         SetupCharactersControllers();
         SetupView();
+        SetupBattle();
         SceneLoaded.Invoke();
     }
-    
+
     private void SetupCharacters()
     {
         _player = new Character(new Property(PlayerTemplate.MaxHealth), PlayerTemplate.Damage);
@@ -70,9 +73,10 @@ public class BattleCompositeRoot : MonoBehaviour
         PlayerView.Instantiate(PlayerTemplate.Name, PlayerTemplate.Icon, _player);
         EnemyView.Instantiate(EnemyTemplate.Name, EnemyTemplate.Icon, _enemy);        
     }
-    
-    public void StartBattle()
+
+    private void SetupBattle()
     {
-        _turnManager.NextTurn();
+        _battleController.Instantiate(_turnManager, _playerController, _enemyController);
     }
+    
 }

@@ -12,6 +12,7 @@ namespace Wof.PF.Models
         private Queue<Turn> _turns = new();
 
         public event Action RoundEnded;
+        public event Action TurnEnded;
 
         public TurnManager(StateMachine stateMachine, IStateFactory stateFactory) 
         {
@@ -63,6 +64,7 @@ namespace Wof.PF.Models
             }
             var turn = _turns.Dequeue();
             var state = _stateFactory.CreateState(turn);
+            state.Ended += () => { TurnEnded?.Invoke(); };
             _machine.ChangeState(state);
             _playedTurns.Enqueue(turn);
         }

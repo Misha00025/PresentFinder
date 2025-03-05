@@ -9,6 +9,9 @@
    id="svg1"
    inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
    sodipodi:docname="socks.svg"
+   inkscape:export-filename="socks.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +34,7 @@
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer2" />
+     inkscape:current-layer="layer1" />
   <defs
      id="defs1" />
   <g
@@ -39,7 +42,7 @@
      id="layer2"
      inkscape:label="Слой 2">
     <rect
-       style="fill:#262254;stroke:#000000;stroke-width:0.276;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
+       style="display:inline;fill:#262254;fill-opacity:1;stroke:#000000;stroke-width:0.276;stroke-linecap:round;stroke-linejoin:round"
        id="rect5"
        width="100.2464"
        height="99.890282"
@@ -56,15 +59,15 @@
        id="path5" />
     <path
        d="M 46.782929,15.613061 37.816741,47.821588 H 27.366914 v 0.120149 a 11.937472,11.928874 0 0 0 -0.465298,-0.02025 11.937472,11.928874 0 0 0 -11.937517,11.928967 11.937472,11.928874 0 0 0 11.937517,11.928967 11.937472,11.928874 0 0 0 0.465298,-0.06122 v 0.136349 h 31.812079 l 0.404097,0.112498 0.0315,-0.112498 h 0.0031 v -0.0121 l 13.604356,-48.86924 z"
-       style="fill:#ffffff;stroke:#000000;stroke-width:0.24034;stroke-linecap:round;stroke-linejoin:round"
+       style="fill:#ff7eca;stroke:#000000;stroke-width:0.24034;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
        id="path5-2" />
     <path
        d="M 57.671443,25.965431 48.705255,58.173958 H 38.255428 v 0.120149 a 11.937472,11.928874 0 0 0 -0.465298,-0.02025 11.937472,11.928874 0 0 0 -11.937517,11.928967 11.937472,11.928874 0 0 0 11.937517,11.928967 11.937472,11.928874 0 0 0 0.465298,-0.0612 v 0.136349 h 31.812079 l 0.404097,0.112499 0.0315,-0.112499 h 0.0031 v -0.01214 L 84.11056,33.325584 Z"
-       style="fill:#ffffff;stroke:#000000;stroke-width:0.24034;stroke-linecap:round;stroke-linejoin:round"
+       style="fill:#989898;stroke:#000000;stroke-width:0.24034;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
        id="path5-7" />
     <path
        d="M 67.272829,35.604809 58.306641,67.813337 H 47.856813 v 0.120149 a 11.937472,11.928874 0 0 0 -0.465297,-0.02025 11.937472,11.928874 0 0 0 -11.937517,11.928967 11.937472,11.928874 0 0 0 11.937517,11.928967 11.937472,11.928874 0 0 0 0.465297,-0.06122 v 0.13635 h 31.81208 l 0.404097,0.112498 0.0315,-0.112498 h 0.0031 v -0.0121 L 93.71195,42.964962 Z"
-       style="fill:#ffffff;stroke:#000000;stroke-width:0.24034;stroke-linecap:round;stroke-linejoin:round"
+       style="fill:#e8d400;stroke:#000000;stroke-width:0.24034;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
        id="path5-7-6" />
   </g>
 </svg>

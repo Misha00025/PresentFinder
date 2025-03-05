@@ -409,7 +409,7 @@ MonoBehaviour:
   messageText: {fileID: 7553310011156186754}
   dialogueWindow: {fileID: 5882909056955491060}
   animateText: 1
-  textAnimationSpeed: 0.5
+  textAnimationSpeed: 1
   actionInput: 32
 --- !u!1 &1161257290861077392
 GameObject:

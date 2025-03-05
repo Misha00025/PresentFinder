@@ -12,6 +12,7 @@ public class SockView : MonoBehaviour
 
     public void ShowPrepare()
     {
+        StopAnimations();
         var targetTransform = transform;
         Sequence sequence = DOTween.Sequence();
         sequence.Append(targetTransform.DOLocalMoveX(_shakeStrength, _shakeDuration / 2).SetRelative())
@@ -21,8 +22,13 @@ public class SockView : MonoBehaviour
     
     public void ShowAttach(bool missing)
     {
-        if (_shakeTween != null && _shakeTween.IsActive())
-            _shakeTween.Kill();
+        StopAnimations();
+        if (_shakeTween != null && _shakeTween.IsActive()){}
         
+    }
+    
+    public void StopAnimations()
+    {
+        _shakeTween.Kill();
     }
 }

@@ -23,7 +23,8 @@ public abstract class EnemyController : MyCharacterController
 
     public override void OnEnable()
     {
-        StartCoroutine(Turn());
+        if (Model.Health.Value > 0) 
+            StartCoroutine(Turn());
     }
         
     public void OnDestroy()
