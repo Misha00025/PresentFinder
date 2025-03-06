@@ -27,4 +27,9 @@ public class SceneLoader : MonoBehaviour
         int nextId = CurrentId + 1;
         SceneManager.LoadScene(nextId);
     }
+    
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

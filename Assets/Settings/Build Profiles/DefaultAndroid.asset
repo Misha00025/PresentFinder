@@ -20,14 +20,18 @@ MonoBehaviour:
     rid: 2710346283925110784
   m_OverrideGlobalSceneList: 1
   m_Scenes:
-  - m_enabled: 0
+  - m_enabled: 1
+    m_path: Assets/PresentFounder/Scenes/MainMenu.unity
+  - m_enabled: 1
     m_path: Assets/PresentFounder/Scenes/ForgeScene.unity
   - m_enabled: 1
     m_path: Assets/PresentFounder/Scenes/SocsBattleScene.unity
-  - m_enabled: 0
+  - m_enabled: 1
     m_path: Assets/PresentFounder/Scenes/SpaScene.unity
-  - m_enabled: 0
+  - m_enabled: 1
     m_path: Assets/PresentFounder/Scenes/DragonBattleScene.unity
+  - m_enabled: 1
+    m_path: Assets/PresentFounder/Scenes/WinScene.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:

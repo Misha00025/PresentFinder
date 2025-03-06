@@ -17,7 +17,6 @@ namespace HeneGames.DialogueSystem
             if (instance == null)
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
             }
             else
             {
@@ -30,6 +29,12 @@ namespace HeneGames.DialogueSystem
 
         #endregion
 
+        void OnDestroy()
+        {
+            if (instance == this)
+                instance = null;
+        }
+        
         private DialogueManager currentDialogueManager;
         private bool typing;
         private string currentMessage;
