@@ -24,7 +24,7 @@ namespace Wof.PF.Models
                     break;
                 case PlayerActionType.Hiss:
                     break;
-                case PlayerActionType.Retreat:
+                case PlayerActionType.Dodge:
                     break;
                 default:
                     break;

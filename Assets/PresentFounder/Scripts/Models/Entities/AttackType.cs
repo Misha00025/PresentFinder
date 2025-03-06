@@ -8,6 +8,6 @@ namespace Wof.PF.Models
         Bite,
         Scratch,
         Hiss,
-        Retreat
+        Dodge
     }
 }
