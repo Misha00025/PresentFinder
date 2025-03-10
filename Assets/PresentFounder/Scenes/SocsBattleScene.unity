@@ -700,7 +700,7 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 1
+            m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 1230721208}
           m_TargetAssemblyTypeName: SockView, Assembly-CSharp
@@ -730,6 +730,30 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: SockView, Assembly-CSharp
           m_MethodName: ShowAttach
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 600241805}
+          m_TargetAssemblyTypeName: PunchShakeEffect, Assembly-CSharp
+          m_MethodName: Shake
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 600241804}
+          m_TargetAssemblyTypeName: ColorTint, Assembly-CSharp
+          m_MethodName: ChangeColor
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -783,6 +807,30 @@ MonoBehaviour:
     sentenceEvent:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &600241804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 70386402395538896, guid: f43fc0595309b50bebcddef9a35b49f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 674491599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709abd4484bfc9f068c7043239d24b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &600241805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7683785479531480557, guid: f43fc0595309b50bebcddef9a35b49f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 674491599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c07759447a56319bad2ebed18a6c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &674491599
 PrefabInstance:
   m_ObjectHideFlags: 0
