@@ -472,11 +472,6 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u0412 \u0441\u0442\u043E\u0440\u043E\u043D\u0443!"
       objectReference: {fileID: 0}
-    - target: {fileID: 2498405466029188765, guid: f43fc0595309b50bebcddef9a35b49f3,
-        type: 3}
-      propertyPath: DamageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 560800225}
     - target: {fileID: 4850387768092031531, guid: f43fc0595309b50bebcddef9a35b49f3,
         type: 3}
       propertyPath: EnemyTemplate
@@ -609,18 +604,6 @@ PrefabInstance:
       insertIndex: 2
       addedObject: {fileID: 1649191193}
   m_SourcePrefab: {fileID: 100100000, guid: f43fc0595309b50bebcddef9a35b49f3, type: 3}
---- !u!114 &560800225 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 70386402395538896, guid: f43fc0595309b50bebcddef9a35b49f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 560800220}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709abd4484bfc9f068c7043239d24b5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &580413197
 GameObject:
   m_ObjectHideFlags: 0

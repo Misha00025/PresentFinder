@@ -1,11 +1,14 @@
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SockView : MonoBehaviour
 {
     [SerializeField] private float _shakeStrength = 0.05f;
     [SerializeField] private float _shakeDuration = 0.2f;
+    
+    public UnityEvent Activated;
+    public UnityEvent Prepared;
     
     private Tween _shakeTween;
     // [SerializeField] private TextMeshProUGUI _logPanel;
@@ -24,11 +27,13 @@ public class SockView : MonoBehaviour
     {
         StopAnimations();
         if (_shakeTween != null && _shakeTween.IsActive()){}
-        
+        if (!missing)
+            Activated.Invoke();
     }
     
     public void StopAnimations()
     {
         _shakeTween.Kill();
+        Prepared.Invoke();
     }
 }

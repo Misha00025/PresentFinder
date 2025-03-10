@@ -21,6 +21,8 @@ public class Sock
 public class SocksController : EnemyController
 {
     [SerializeField] private List<Sock> _socks;
+    [SerializeField] private float _afterAttackTime = 0.6f;
+    [SerializeField] private float _afterPrepareTime = 0.2f;
     
     private List<Sock> _attackers = null;
     
@@ -37,10 +39,13 @@ public class SocksController : EnemyController
             foreach (var attacker in _attackers)
             {   
                 var canAttack = attacker.CanAttack(LastPlayerAction);
-                if (canAttack)
-                    ActionRecorder.RegisterEnemyAttack();
                 attacker.View.ShowAttach(!canAttack);
-                yield return new WaitForSeconds(0.2f);
+                if (canAttack)
+                {
+                    yield return new WaitForSeconds(_afterAttackTime/2);
+                    ActionRecorder.RegisterEnemyAttack();
+                    yield return new WaitForSeconds(_afterAttackTime/2);                    
+                }
             }
     }
     
@@ -54,7 +59,7 @@ public class SocksController : EnemyController
         foreach (var attacker in _attackers)
         {
             attacker.View.ShowPrepare();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(_afterPrepareTime);
         }
         yield return null;
     }

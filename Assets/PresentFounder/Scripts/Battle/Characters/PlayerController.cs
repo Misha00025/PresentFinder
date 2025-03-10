@@ -7,6 +7,7 @@ public class PlayerController : MyCharacterController
 {
     [field: SerializeField] public List<Button> Buttons { get; private set; }
     [field: SerializeField] public List<PlayerActionType> Actions { get; private set; }
+    [field: SerializeField] public PlayerView PlayerView { get; private set; }
 
     protected override void OnInstantiated()
     {
@@ -21,24 +22,33 @@ public class PlayerController : MyCharacterController
 
     public override void OnDisable()
     {
-        foreach (var button in Buttons)
-        {
-            button.interactable = false;
-        }
+        SetButtons(false);
     }
 
     public override void OnEnable()
     {
+        SetButtons(true);
+    }
+    
+    private void SetButtons(bool interactable)
+    {
         foreach (var button in Buttons)
         {
-            button.interactable = true;
+            button.interactable = interactable;
         }
     }
     
     protected void Activate(PlayerActionType actionType)
     {
         Debug.Log($"Action: {actionType}");
-        ActionRecorder.RegisterPlayerAction(actionType);
-        EndTurn();   
+        SetButtons(false);
+        PlayerView.ShowAction(
+            actionType, 
+            onEffect:() => {
+                ActionRecorder.RegisterPlayerAction(actionType);
+                Debug.Log($"Player action registered: {actionType}");
+            }, 
+            onEnd:EndTurn
+        );   
     }
 }
