@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Wof.PF.Models;
 
 public abstract class MyCharacterController : MonoBehaviour
@@ -7,7 +8,9 @@ public abstract class MyCharacterController : MonoBehaviour
     private TurnManager _turnManager = null;
     private ActionRecorder _actionRecorder = null;
     private Turn _myTurn;
+    private int _lastHealth = 0;
     
+    public UnityEvent DamageTaken;
     public Character Model => _model;
     public ActionRecorder ActionRecorder => _actionRecorder;
 
@@ -21,6 +24,12 @@ public abstract class MyCharacterController : MonoBehaviour
             _actionRecorder = actionRecorder;
         _myTurn = new Turn(_model);
         _turnManager.Add(_myTurn);
+        _lastHealth = _model.Health.Value;
+        _model.Health.Changed += (int value) => 
+        {
+            if (value < _lastHealth)
+                DamageTaken.Invoke();
+        };
         OnInstantiated();
     }
 

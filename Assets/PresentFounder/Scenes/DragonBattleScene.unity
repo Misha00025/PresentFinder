@@ -249,39 +249,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 726dc11f0db2f6041ada890cd3eaccaf, type: 3}
---- !u!1 &109183246 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 509147958749389326, guid: f43fc0595309b50bebcddef9a35b49f3,
+--- !u!114 &109183248 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6534689735411549599, guid: f43fc0595309b50bebcddef9a35b49f3,
     type: 3}
   m_PrefabInstance: {fileID: 560800220}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &109183248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109183246}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62d84701380ec6e7286361b114f704ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeout: 0.5
-  _dragonAttacks:
-  - <Name>k__BackingField: "\u0417\u0443\u0431\u044B"
-    <View>k__BackingField: {fileID: 1649191193}
-    _weaknesses: 0100000002000000
-  - <Name>k__BackingField: "\u041A\u043E\u0433\u0442\u0438"
-    <View>k__BackingField: {fileID: 1649191193}
-    _weaknesses: 02000000
-  - <Name>k__BackingField: "\u0425\u0432\u043E\u0441\u0442"
-    <View>k__BackingField: {fileID: 1649191193}
-    _weaknesses: 01000000
-  _defaultAttack:
-    <Name>k__BackingField: "\u041A\u043E\u043D\u0442\u0440\u0443\u0434\u0430\u0440"
-    <View>k__BackingField: {fileID: 1649191193}
-    _weaknesses: 0100000002000000
 --- !u!1 &313710063
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +387,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 70386402395538896, guid: f43fc0595309b50bebcddef9a35b49f3,
+        type: 3}
+      propertyPath: CharacterMaterial
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 576861485735628764, guid: f43fc0595309b50bebcddef9a35b49f3,
         type: 3}
       propertyPath: Win.m_PersistentCalls.m_Calls.Array.size
@@ -488,6 +472,11 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u0412 \u0441\u0442\u043E\u0440\u043E\u043D\u0443!"
       objectReference: {fileID: 0}
+    - target: {fileID: 2498405466029188765, guid: f43fc0595309b50bebcddef9a35b49f3,
+        type: 3}
+      propertyPath: DamageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 560800225}
     - target: {fileID: 4850387768092031531, guid: f43fc0595309b50bebcddef9a35b49f3,
         type: 3}
       propertyPath: EnemyTemplate
@@ -535,6 +524,26 @@ PrefabInstance:
       propertyPath: SceneLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6534689735411549599, guid: f43fc0595309b50bebcddef9a35b49f3,
+        type: 3}
+      propertyPath: _defaultAttack.<View>k__BackingField
+      value: 
+      objectReference: {fileID: 1649191193}
+    - target: {fileID: 6534689735411549599, guid: f43fc0595309b50bebcddef9a35b49f3,
+        type: 3}
+      propertyPath: _dragonAttacks.Array.data[0].<View>k__BackingField
+      value: 
+      objectReference: {fileID: 1649191193}
+    - target: {fileID: 6534689735411549599, guid: f43fc0595309b50bebcddef9a35b49f3,
+        type: 3}
+      propertyPath: _dragonAttacks.Array.data[1].<View>k__BackingField
+      value: 
+      objectReference: {fileID: 1649191193}
+    - target: {fileID: 6534689735411549599, guid: f43fc0595309b50bebcddef9a35b49f3,
+        type: 3}
+      propertyPath: _dragonAttacks.Array.data[2].<View>k__BackingField
+      value: 
+      objectReference: {fileID: 1649191193}
     - target: {fileID: 7196812222925615825, guid: f43fc0595309b50bebcddef9a35b49f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -595,15 +604,23 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 509147958749389326, guid: f43fc0595309b50bebcddef9a35b49f3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 109183248}
     - targetCorrespondingSourceObject: {fileID: 4658269928618003538, guid: f43fc0595309b50bebcddef9a35b49f3,
         type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 1649191193}
   m_SourcePrefab: {fileID: 100100000, guid: f43fc0595309b50bebcddef9a35b49f3, type: 3}
+--- !u!114 &560800225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 70386402395538896, guid: f43fc0595309b50bebcddef9a35b49f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 560800220}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709abd4484bfc9f068c7043239d24b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &580413197
 GameObject:
   m_ObjectHideFlags: 0

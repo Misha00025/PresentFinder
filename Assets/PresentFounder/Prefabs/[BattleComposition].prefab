@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3550378794523117192}
+  - component: {fileID: 6534689735411549599}
   - component: {fileID: 8136519951762451144}
   m_Layer: 0
   m_Name: EnemyController
@@ -32,6 +33,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8318098073671164625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6534689735411549599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509147958749389326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d84701380ec6e7286361b114f704ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 802143008495617557}
+        m_TargetAssemblyTypeName: PunchShakeEffect, Assembly-CSharp
+        m_MethodName: Shake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8985475564859063144}
+        m_TargetAssemblyTypeName: ColorTint, Assembly-CSharp
+        m_MethodName: ChangeColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _timeout: 0.5
+  _dragonAttacks:
+  - <Name>k__BackingField: "\u0417\u0443\u0431\u044B"
+    <View>k__BackingField: {fileID: 0}
+    _weaknesses: 0100000002000000
+  - <Name>k__BackingField: "\u041A\u043E\u0433\u0442\u0438"
+    <View>k__BackingField: {fileID: 0}
+    _weaknesses: 02000000
+  - <Name>k__BackingField: "\u0425\u0432\u043E\u0441\u0442"
+    <View>k__BackingField: {fileID: 0}
+    _weaknesses: 01000000
+  _defaultAttack:
+    <Name>k__BackingField: "\u041A\u043E\u043D\u0442\u0440\u0443\u0434\u0430\u0440"
+    <View>k__BackingField: {fileID: 0}
+    _weaknesses: 0100000002000000
 --- !u!114 &8136519951762451144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ca1aad49854b60894c8dda72bc0e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &551387328449748516
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +593,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188aaf1bed04d96d48ebd7fca1281402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7683785479531480557}
+        m_TargetAssemblyTypeName: PunchShakeEffect, Assembly-CSharp
+        m_MethodName: Shake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ColorTint, Assembly-CSharp
+        m_MethodName: ChangeColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <Buttons>k__BackingField:
   - {fileID: 4010244866738617789}
   - {fileID: 3836033235947663290}
@@ -619,6 +704,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6016504804441076859}
   - component: {fileID: 4142558089669136240}
+  - component: {fileID: 7683785479531480557}
+  - component: {fileID: 70386402395538896}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -687,7 +774,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee,
     type: 3}
-  m_Color: {r: 0, g: 1, b: 0.009311438, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -697,6 +784,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7683785479531480557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388828652243326177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c07759447a56319bad2ebed18a6c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDirection: {x: -1, y: 0}
+  shakeDuration: 0.7
+  shakeStrength: 0.5
+--- !u!114 &70386402395538896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388828652243326177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709abd4484bfc9f068c7043239d24b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TintColor: {r: 1, g: 0, b: 0, a: 1}
+  Duration: 0.7
+  _images: []
 --- !u!1 &3538670161304207517
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +927,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1734659737940209258}
   - component: {fileID: 2713853697407928564}
+  - component: {fileID: 802143008495617557}
+  - component: {fileID: 8985475564859063144}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -878,7 +997,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee,
     type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -888,6 +1007,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &802143008495617557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4658269928618003538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c07759447a56319bad2ebed18a6c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDirection: {x: 1, y: 0}
+  shakeDuration: 0.5
+  shakeStrength: 0.3
+--- !u!114 &8985475564859063144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4658269928618003538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709abd4484bfc9f068c7043239d24b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TintColor: {r: 1, g: 0, b: 0, a: 0.75}
+  Duration: 0.5
+  _images: []
 --- !u!1 &5389682309200350109
 GameObject:
   m_ObjectHideFlags: 0
