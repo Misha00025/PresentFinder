@@ -42,9 +42,10 @@ public class DragonController : EnemyController
     {
         var isPainful = IsPainful();
         yield return new WaitForSeconds(_timeout);
+        if (_preparedAttack != null || CanAttack() || _lastAttack?.Name == "Удар хвостом")
+            Attack.View.ShowAttach(!CanAttack());
         if (CanAttack())
             ActionRecorder.RegisterEnemyAttack();
-        Attack.View.ShowAttach(!CanAttack());
         _lastAttack = _preparedAttack;
         _preparedAttack = null;
         if (IsProvoked() || isPainful)
@@ -61,6 +62,8 @@ public class DragonController : EnemyController
         if (_lastAttack != null)
         {
             var playerIsDodging = LastPlayerAction == PlayerActionType.Dodge;
+            if (_lastAttack.Name == "Удар хвостом" && !playerIsDodging)
+                return true;
             var ok = !playerIsDodging && !IsPainful();
             return ok;
         }
