@@ -51,4 +51,9 @@ public class PlayerController : MyCharacterController
             onEnd:EndTurn
         );   
     }
+    
+    public void SkipTurn()
+    {
+        EndTurn();
+    }
 }
