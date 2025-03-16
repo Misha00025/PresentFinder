@@ -9,14 +9,14 @@ public class SceneLoader : MonoBehaviour
 
     public LoadScreen LoadScreen;
     public UnityEvent LastSceneFounded;
-    private string _lastScene = null;
+    private int _lastSceneId;
     public int CurrentId => SceneManager.GetActiveScene().buildIndex;
     
     public void Awake()
     {
         if (PlayerPrefs.HasKey("LastScene"))
         {
-            _lastScene = PlayerPrefs.GetString("LastScene");
+            _lastSceneId = PlayerPrefs.GetInt("LastScene");
             LastSceneFounded.Invoke();
         }
         if (_loadScreen == null && LoadScreen != null)
@@ -39,7 +39,7 @@ public class SceneLoader : MonoBehaviour
     
     public void LoadLastScene()
     {
-        ChangeScene(SceneManager.GetSceneByName(_lastScene).buildIndex);
+        ChangeScene(_lastSceneId);
     }
     
     public void LoadNextScene()
