@@ -59,9 +59,13 @@ public class DragonController : EnemyController
     
     private bool CanAttack()
     {
-        if (_lastAttack != null)
+        var playerIsDodging = LastPlayerAction == PlayerActionType.Dodge;
+        if (_preparedAttack != null)
         {
-            var playerIsDodging = LastPlayerAction == PlayerActionType.Dodge;
+            return !playerIsDodging;
+        }
+        else if (_lastAttack != null)
+        {
             if (_lastAttack.Name == "Удар хвостом" && !playerIsDodging)
                 return true;
             var ok = !playerIsDodging && !IsPainful();
