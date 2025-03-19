@@ -19,9 +19,12 @@ public class DragonAttack {
 
 public class DragonController : EnemyController
 {
+    private const string TAIL_ATTACK = "Удар хвостом";
     [SerializeField] private float _timeout = 0.5f;
     [SerializeField] private List<DragonAttack> _dragonAttacks;
     [SerializeField] private DragonAttack _defaultAttack;
+    [SerializeField] private int _tailCoolDown = 2;
+    private int _remainingTailCoolDown = 0;
     
     private DragonAttack _preparedAttack = null;
     private DragonAttack _lastAttack = null;
@@ -42,7 +45,7 @@ public class DragonController : EnemyController
     {
         var isPainful = IsPainful();
         yield return new WaitForSeconds(_timeout);
-        if (_preparedAttack != null || CanAttack() || _lastAttack?.Name == "Удар хвостом")
+        if (_preparedAttack != null || CanAttack() || _lastAttack?.Name == TAIL_ATTACK)
             Attack.View.ShowAttach(!CanAttack());
         if (CanAttack())
             ActionRecorder.RegisterEnemyAttack();
@@ -66,7 +69,7 @@ public class DragonController : EnemyController
         }
         else if (_lastAttack != null)
         {
-            if (_lastAttack.Name == "Удар хвостом" && !playerIsDodging)
+            if (_lastAttack.Name == TAIL_ATTACK && !playerIsDodging)
                 return true;
             var ok = !playerIsDodging && !IsPainful();
             return ok;
@@ -88,8 +91,24 @@ public class DragonController : EnemyController
     
     private void PrepareAttack()
     {
-        var attackId = UnityEngine.Random.Range(0, _dragonAttacks.Count);
-        _preparedAttack = _dragonAttacks[attackId];
+        var attacks = _dragonAttacks.ToList();
+        if (_remainingTailCoolDown > 0)
+        {
+            for (var i = 0; i < attacks.Count; i++)
+                if (attacks[i].Name == TAIL_ATTACK)
+                    attacks.RemoveAt(i);
+        }
+        else
+        {
+            _remainingTailCoolDown--;
+        }
+            
+        var attackId = UnityEngine.Random.Range(0, attacks.Count);
+        _preparedAttack = attacks[attackId];
+        if (_preparedAttack?.Name == TAIL_ATTACK)
+        {
+            _remainingTailCoolDown = _tailCoolDown;
+        }
         _preparedAttack.View.ShowPrepare();
     }
 }
